@@ -3,7 +3,7 @@ const Product = require("../models/product");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const products = await Products.getAll();
+  const products = await Product.getAll();
   res.render("products", {
     title: "Products page",
     isProducts: true,
