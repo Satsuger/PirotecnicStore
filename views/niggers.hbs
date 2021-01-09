@@ -1,0 +1,24 @@
+<h1>show all niggers</h1>
+
+{{#if niggers.length}}
+<div class="row">
+  {{#each niggers}}
+  <div class="col s6 offset-3">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{image}}" alt="{{name}}">
+        <span class="card-title">{{name}}dsgsg</span>
+      </div>
+      <div class="card-content">
+        <p class="price">{{price}}</p>
+      </div>
+      <div class="card-action">
+        <a href="/niggers/{{id}}" target="_blank">Look at him</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{else}}
+<span class="collection-item">There is no nigger</span>
+{{/if}}

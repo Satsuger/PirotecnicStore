@@ -1,7 +1,10 @@
 const exphbs = require("express-handlebars");
 const express = require("express");
 const path = require("path");
-const { ppid } = require("process");
+const niggersRouter = require("./routes/niggers");
+const homeRouter = require("./routes/home");
+const addRouter = require("./routes/add");
+const { urlencoded } = require("express");
 
 // Configure
 const app = express();
@@ -17,27 +20,11 @@ app.set("views", "views");
 
 // Middlevares
 app.use(express.static("public"));
+app.use(urlencoded({ extended: true}));
 
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: 'Home page',
-    isHome: true
-  });
-});
-
-app.get("/add", (req, res) => {
-  res.render("add", {
-    title: 'Add daun page',
-    isAdd: true
-  });
-});
-
-app.get("/dauns", (req, res) => {
-  res.render("dauns", {
-    title: 'Dauns page',
-    isDauns: true
-  });
-});
+app.use("/", homeRouter);
+app.use("/niggers", niggersRouter);
+app.use("/add", addRouter);
 
 // Listen
 const PORT = process.env.PORT || 3000;
