@@ -20,13 +20,13 @@ class Product {
   }
 
   async save() {
-    const niggers = await Nigger.getAll();
-    niggers.push(this.toJSON());
+    const products = await Product.getAll();
+    products.push(this.toJSON());
 
     return new Promise((resolve, reject) => {
       fs.writeFile(
         path.join(__dirname, "..", "data", "products.json"),
-        JSON.stringify(niggers),
+        JSON.stringify(products),
         (err) => {
           err ? reject(err) : resolve();
         }
