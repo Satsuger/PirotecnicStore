@@ -1,13 +1,13 @@
 const { Router } = require("express");
-const Nigger = require("../models/nigger");
+const Product = require("../models/product");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const niggers = await Nigger.getAll();
-  res.render("niggers", {
-    title: "Niggers page",
+  const products = await Products.getAll();
+  res.render("products", {
+    title: "Products page",
     isDauns: true,
-    niggers,
+    products,
   });
 });
 
@@ -16,12 +16,12 @@ router.get("/:id/edit", (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const nigger = await Nigger.getById(req.params.id);
+  const product = await Product.getById(req.params.id);
 
-  res.render("nigger", {
+  res.render("product", {
     layout: "empty",
-    title: `Nigger ${nigger.name}`,
-    nigger,
+    title: `Product ${product.name}`,
+    product,
   });
 });
 

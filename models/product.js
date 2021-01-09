@@ -2,9 +2,9 @@ const { v4 } = require("uuid");
 const path = require("path");
 const fs = require("fs");
 
-class Nigger {
-  constructor(name, price, image) {
-    this.name = name;
+class Product {
+  constructor(title, price, image) {
+    this.title = title;
     this.price = price;
     this.image = image;
     this.id = v4();
@@ -12,7 +12,7 @@ class Nigger {
 
   toJSON() {
     return {
-      name: this.name,
+      title: this.title,
       price: this.price,
       image: this.image,
       id: this.id,
@@ -25,7 +25,7 @@ class Nigger {
 
     return new Promise((resolve, reject) => {
       fs.writeFile(
-        path.join(__dirname, "..", "data", "niggers.json"),
+        path.join(__dirname, "..", "data", "products.json"),
         JSON.stringify(niggers),
         (err) => {
           err ? reject(err) : resolve();
@@ -35,14 +35,14 @@ class Nigger {
   }
 
   static async getById(id) {
-    const niggers = await Nigger.getAll();
-    return niggers.find(item => item.id === id)
+    const products = await Product.getAll();
+    return products.find(item => item.id === id)
   }
 
   static getAll() {
     return new Promise((resolve, reject) => {
       fs.readFile(
-        path.join(__dirname, "..", "data", "niggers.json"),
+        path.join(__dirname, "..", "data", "products.json"),
         "utf-8",
         (err, content) => {
           if (err) reject(err);
@@ -53,4 +53,4 @@ class Nigger {
   }
 }
 
-module.exports = Nigger;
+module.exports = Product;
