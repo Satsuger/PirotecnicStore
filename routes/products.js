@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
   const products = await Products.getAll();
   res.render("products", {
     title: "Products page",
-    isDauns: true,
+    isProducts: true,
     products,
   });
 });

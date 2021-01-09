@@ -1,7 +1,7 @@
 const exphbs = require("express-handlebars");
 const express = require("express");
 const path = require("path");
-const niggersRouter = require("./routes/niggers");
+const productsRouter = require("./routes/products");
 const homeRouter = require("./routes/home");
 const addRouter = require("./routes/add");
 const { urlencoded } = require("express");
@@ -20,10 +20,10 @@ app.set("views", "views");
 
 // Middlevares
 app.use(express.static("public"));
-app.use(urlencoded({ extended: true}));
+app.use(urlencoded({ extended: true }));
 
 app.use("/", homeRouter);
-app.use("/niggers", niggersRouter);
+app.use("/products", productsRouter);
 app.use("/add", addRouter);
 
 // Listen
