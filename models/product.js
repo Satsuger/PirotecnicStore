@@ -34,9 +34,26 @@ class Product {
     });
   }
 
+  static async update(product) {
+    const products = await Product.getAll();
+
+    const index = products.findIndex((p) => p.id === product.id);
+    products[index] = product;
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(
+        path.join(__dirname, "..", "data", "products.json"),
+        JSON.stringify(products),
+        (err) => {
+          err ? reject(err) : resolve();
+        }
+      );
+    });
+  }
+
   static async getById(id) {
     const products = await Product.getAll();
-    return products.find(item => item.id === id)
+    return products.find((item) => item.id === id);
   }
 
   static getAll() {
