@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const { countReset } = require("console");
 
 const p = path.join(__dirname, "..", "data", "card.json");
 
@@ -23,6 +24,23 @@ class Card {
     return new Promise((resolve, reject) => {
       fs.writeFile(p, JSON.stringify(card), (err) => {
         err ? reject() : resolve();
+      });
+    });
+  }
+
+  static async remove(id) {
+    const card = await Card.fetch();
+    const idx = card.products.findIndex((p) => p.id === id);
+    const product = card.products[idx];
+
+    if (product.count === 1) card.products = card.products.filter((p) => p.id !== id);
+    else card.products[idx].count--;
+    
+    card.price -= product.price;
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(p, JSON.stringify(card), (err) => {
+        err ? reject() : resolve(card);
       });
     });
   }
