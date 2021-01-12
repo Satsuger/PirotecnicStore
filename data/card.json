@@ -1,0 +1,17 @@
+{
+  "products": [
+    {
+      "price": "999.99",
+      "image": "https://rusevik.ru/data/news/5afb08f227dec.jpg",
+      "id": "2807980e-82ce-4398-90e5-9dbbf4ee2f16",
+      "count": 1
+    },
+    {
+      "price": "999.99",
+      "image": "https://rusevik.ru/data/news/5afb08f227dec.jpg",
+      "id": "2807980e-82ce-4398-90e5-9dbbf4ee2f16",
+      "count": 1
+    }
+  ],
+  "price": 1999.98
+}

@@ -1,10 +1,11 @@
 const exphbs = require("express-handlebars");
-const express = require("express");
 const path = require("path");
-const productsRouter = require("./routes/products");
-const homeRouter = require("./routes/home");
-const addRouter = require("./routes/add");
+const express = require("express");
 const { urlencoded } = require("express");
+const addRouter = require("./routes/add");
+const homeRouter = require("./routes/home");
+const cardRouter = require("./routes/card");
+const productsRouter = require("./routes/products");
 
 // Configure
 const app = express();
@@ -23,8 +24,9 @@ app.use(express.static("public"));
 app.use(urlencoded({ extended: true }));
 
 app.use("/", homeRouter);
-app.use("/products", productsRouter);
 app.use("/add", addRouter);
+app.use("/card", cardRouter);
+app.use("/products", productsRouter);
 
 // Listen
 const PORT = process.env.PORT || 3000;
